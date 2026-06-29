@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Carolina Black Agenda | New Alpha CDC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #2D0A4E;
+    --purple-mid: #3D1568;
+    --purple-light: #5A2D82;
+    --gold: #C9A227;
+    --gold-light: #E8C05A;
+    --gold-pale: #F5E6B0;
+    --white: #FFFFFF;
+    --off-white: #FAF7F0;
+    --text-light: rgba(255,255,255,0.85);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Archivo', sans-serif;
+    background: var(--off-white);
+    color: var(--purple-deep);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 999;
+    background: var(--purple-deep);
+    border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 2rem;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold); letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a {
+    color: var(--text-light); font-size: 0.82rem; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 56px;
+    background: linear-gradient(160deg, var(--purple-deep) 0%, var(--purple-mid) 60%, #1a0535 100%);
+    min-height: 92vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,162,39,0.06) 40px, rgba(201,162,39,0.06) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,162,39,0.06) 40px, rgba(201,162,39,0.06) 41px);
+  }
+  /* Kente border strips */
+  .hero::after {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 8px;
+    background: repeating-linear-gradient(to bottom, var(--gold) 0, var(--gold) 12px, var(--purple-light) 12px, var(--purple-light) 24px, #8B1A1A 24px, #8B1A1A 36px);
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 860px; text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--white); margin-bottom: 1.25rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem; line-height: 1.7;
+    color: var(--text-light); max-width: 620px;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--purple-deep);
+    padding: 0.85rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent; color: var(--gold-light);
+    padding: 0.85rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    border: 1.5px solid var(--gold);
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: rgba(201,162,39,0.12); transform: translateY(-2px); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--gold);
+    padding: 1.5rem 2rem;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--purple-deep); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--purple-mid); margin-top: 0.2rem;
+  }
+
+  /* ── DIVIDER ── */
+  .kente-divider {
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 20px, var(--purple-light) 20px, var(--purple-light) 40px, #8B1A1A 40px, #8B1A1A 60px, var(--purple-deep) 60px, var(--purple-deep) 80px);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--purple-deep);
+    line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-body { font-size: 1rem; line-height: 1.75; color: #444; max-width: 680px; }
+
+  /* ── PILLARS ── */
+  #pillars { background: var(--purple-deep); }
+  #pillars .section-title { color: var(--white); }
+  #pillars .section-body { color: var(--text-light); }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem; margin-top: 3rem;
+  }
+  .pillar-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,162,39,0.25);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px; padding: 1.25rem 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pillar-card:hover {
+    background: rgba(201,162,39,0.1);
+    transform: translateY(-3px);
+  }
+  .pillar-num {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem;
+  }
+  .pillar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--white); line-height: 1.3;
+  }
+
+  /* ── DOWNLOAD ── */
+  #download { background: var(--off-white); }
+  .download-card {
+    background: var(--purple-deep);
+    border-radius: 12px; padding: 3rem;
+    display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;
+    border: 2px solid var(--gold);
+    margin-top: 2.5rem;
+  }
+  .download-book {
+    width: 140px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--purple-mid), #1a0535);
+    border: 3px solid var(--gold); border-radius: 4px;
+    aspect-ratio: 3/4;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .download-book::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: repeating-linear-gradient(to bottom, var(--gold) 0, var(--gold) 8px, var(--purple-light) 8px, var(--purple-light) 16px);
+  }
+  .download-book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; font-weight: 700; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.3;
+  }
+  .download-content { flex: 1; min-width: 240px; }
+  .download-content .section-title { color: var(--white); }
+  .download-content p { color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  /* ── PLEDGE ── */
+  #pledge { background: var(--gold); }
+  .pledge-box {
+    max-width: 800px; margin: 0 auto; text-align: center;
+  }
+  #pledge .section-label { color: var(--purple-deep); }
+  #pledge .section-title { color: var(--purple-deep); }
+  .pledge-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-style: italic;
+    color: var(--purple-deep); line-height: 1.65;
+    border: 2px solid var(--purple-deep);
+    padding: 2rem; border-radius: 6px;
+    background: rgba(255,255,255,0.3);
+    margin: 1.5rem 0;
+  }
+
+  /* ── FORM ── */
+  #sign { background: var(--purple-deep); }
+  #sign .section-title { color: var(--white); }
+  #sign .section-body { color: var(--text-light); }
+  .form-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,162,39,0.3);
+    border-radius: 10px; padding: 2.5rem;
+    margin-top: 2.5rem;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold-light);
+  }
+  .form-group input,
+  .form-group textarea {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(201,162,39,0.4);
+    border-radius: 4px; padding: 0.75rem 1rem;
+    color: var(--white); font-size: 0.95rem;
+    font-family: 'Archivo', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .pledge-check {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    color: var(--text-light); font-size: 0.9rem; line-height: 1.5;
+    margin-top: 0.5rem; cursor: pointer;
+  }
+  .pledge-check input[type="checkbox"] {
+    width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+    accent-color: var(--gold); cursor: pointer;
+  }
+  .form-submit-row {
+    margin-top: 1.75rem;
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  #form-message {
+    font-size: 0.9rem; font-weight: 600;
+  }
+  .success-msg { color: var(--gold-light); }
+  .error-msg { color: #ff7070; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a0535;
+    border-top: 3px solid var(--gold);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.78rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { color: var(--gold-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .form-grid { grid-template-columns: 1fr; }
+    .download-card { flex-direction: column; }
+    .stats-bar { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://www.newalphacdc.com/" class="nav-logo">New Alpha CDC</a>
+  <div class="nav-links">
+    <a href="#pillars">The Agenda</a>
+    <a href="#download">Download</a>
+    <a href="#pledge">Pledge</a>
+    <a href="#sign">Sign</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">New Alpha Community Development Corporation</p>
+    <h1>South Carolina<br><span>Black Agenda</span></h1>
+    <p class="hero-sub">A bold, community-driven framework for equity, justice, and prosperity across 14 pillars of Black life in South Carolina. Add your voice and pledge your support.</p>
+    <div class="hero-cta-group">
+      <a href="#sign" class="btn-primary">Sign the Pledge</a>
+      <a href="#download" class="btn-secondary">Download the Agenda</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">14</div>
+    <div class="stat-label">Pillars of the Agenda</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$326B</div>
+    <div class="stat-label">Lost Black Farmland Wealth</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">58%</div>
+    <div class="stat-label">of SC Prison Pop. is Black</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">27%</div>
+    <div class="stat-label">of SC Population is Black</div>
+  </div>
+</div>
+
+<div class="kente-divider"></div>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-inner">
+    <p class="section-label">Framework</p>
+    <h2 class="section-title">The 14 Pillars</h2>
+    <p class="section-body">The SC Black Agenda addresses the full spectrum of Black life — from economic justice to environmental equity — with specific challenges, existing solutions, and proposed policy changes for each area.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card"><div class="pillar-num">Pillar 01</div><div class="pillar-name">Food, Clothing &amp; Shelter</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 02</div><div class="pillar-name">Economics</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 03</div><div class="pillar-name">Education</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 04</div><div class="pillar-name">Entertainment &amp; Communications</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 05</div><div class="pillar-name">Environment &amp; Environmental Justice</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 06</div><div class="pillar-name">Globalization</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 07</div><div class="pillar-name">Health</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 08</div><div class="pillar-name">Labor</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 09</div><div class="pillar-name">Law &amp; Justice</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 10</div><div class="pillar-name">Politics &amp; Civic Engagement</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 11</div><div class="pillar-name">Religion</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 12</div><div class="pillar-name">Sex &amp; Gender</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 13</div><div class="pillar-name">Technology</div></div>
+      <div class="pillar-card"><div class="pillar-num">Pillar 14</div><div class="pillar-name">War &amp; Violence</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="kente-divider"></div>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <div class="section-inner">
+    <p class="section-label">Full Document</p>
+    <h2 class="section-title">Download the SC Black Agenda</h2>
+    <div class="download-card">
+      <div class="download-book">
+        <div class="download-book-title">South Carolina Black Agenda</div>
+      </div>
+      <div class="download-content">
+        <h3 class="section-title" style="font-size:1.8rem;">The Complete 14-Pillar Framework</h3>
+        <p>The full South Carolina Black Agenda document includes problem statements, key challenges, existing solutions, proposed solutions, and desired outcomes for all 14 pillars — compiled by New Alpha Community Development Corporation.</p>
+        <a href="https://raw.githubusercontent.com/Reliabl-8/SCBlackAgenda/main/SC%20Black%20Agenda%20-%2014%20Pillars.pdf%20(1).pdf" class="btn-primary" id="download-btn" download="SC_Black_Agenda_14_Pillars.pdf" target="_blank">&#8675; Download PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="kente-divider"></div>
+
+<!-- PLEDGE -->
+<section id="pledge">
+  <div class="section-inner">
+    <div class="pledge-box">
+      <p class="section-label">Take the Pledge</p>
+      <h2 class="section-title">Stand With Your Community</h2>
+      <div class="pledge-statement">
+        "I support and pledge to practice elements of the South Carolina Black Agenda. I commit to advancing equity, justice, and prosperity for Black communities across all 14 pillars of this agenda — in my home, my community, and my state."
+      </div>
+      <a href="#sign" class="btn-primary">Sign the Pledge Below</a>
+    </div>
+  </div>
+</section>
+
+<div class="kente-divider"></div>
+
+<!-- SIGNATURE FORM -->
+<section id="sign">
+  <div class="section-inner">
+    <p class="section-label">Add Your Name</p>
+    <h2 class="section-title">Sign the SC Black Agenda</h2>
+    <p class="section-body">Join community members, leaders, and organizations across South Carolina in pledging support for the Black Agenda.</p>
+
+    <div class="form-card">
+      <form id="signature-form" onsubmit="submitForm(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="first_name">First Name *</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name *</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Your last name" required>
+          </div>
+          <div class="form-group full">
+            <label for="organization">Organization <span style="opacity:0.6;font-weight:400;">(optional)</span></label>
+            <input type="text" id="organization" name="organization" placeholder="Your organization, church, or affiliation">
+          </div>
+          <div class="form-group full">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group full">
+            <label for="city">City / Address *</label>
+            <input type="text" id="city" name="city" placeholder="City or town in South Carolina" required>
+          </div>
+          <div class="form-group full">
+            <label for="phone">Phone Number <span style="opacity:0.6;font-weight:400;">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(___) ___-____">
+          </div>
+        </div>
+
+        <label class="pledge-check" style="margin-top:1.5rem;">
+          <input type="checkbox" id="pledge_consent" name="pledge_consent" required>
+          <span>I support and pledge to practice elements of the South Carolina Black Agenda. I consent to having my name added to the list of supporters.</span>
+        </label>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn-primary">Submit My Signature</button>
+          <span id="form-message"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>SC Black Agenda &copy; 2026 &mdash; <a href="https://www.newalphacdc.com/" target="_blank">New Alpha Community Development Corporation</a></span>
+  <span>Environmental Justice &bull; Community Advocacy &bull; Economic Empowerment</span>
+  <span>Created by <a href="https://www.reliablevasolutionsllc.net/" target="_blank">Reliable VA Solutions, LLC</a></span>
+</footer>
+
+<script>
+// ── FORM SUBMISSION ──
+const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+async function submitForm(e) {
+  e.preventDefault();
+  const msg = document.getElementById('form-message');
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+  msg.textContent = '';
+  msg.className = '';
+
+  const data = {
+    timestamp: new Date().toISOString(),
+    first_name: document.getElementById('first_name').value.trim(),
+    last_name: document.getElementById('last_name').value.trim(),
+    organization: document.getElementById('organization').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    city: document.getElementById('city').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+  };
+
+  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+    // Demo mode
+    await new Promise(r => setTimeout(r, 900));
+    msg.textContent = '✓ Thank you for signing the SC Black Agenda!';
+    msg.className = 'success-msg';
+    e.target.reset();
+    btn.disabled = false;
+    btn.textContent = 'Submit My Signature';
+    return;
+  }
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    msg.textContent = '✓ Thank you for signing the SC Black Agenda!';
+    msg.className = 'success-msg';
+    e.target.reset();
+  } catch(err) {
+    msg.textContent = '✗ Something went wrong. Please try again.';
+    msg.className = 'error-msg';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Submit My Signature';
+}
+</script>
+</body>
+</html>
